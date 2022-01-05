@@ -6,10 +6,10 @@ Vagrant.configure("2") do |config|
   # set the image for the vagrant box
   config.vm.box = "opensuse/Leap-15.2.x86_64"
   ## Set the image version
-  # config.vm.box_version = "15.2.31.247"
+  config.vm.box_version = "15.2.31.247"
 
   # st the static IP for the vagrant box
-  config.vm.network "private_network", ip: "192.168.50.4"
+  config.vm.network "private_network", ip: "192.168.56.5"
   
   # consifure the parameters for VirtualBox provider
   config.vm.provider "virtualbox" do |vb|
