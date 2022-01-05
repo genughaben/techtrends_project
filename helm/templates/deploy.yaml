@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: techtrend-deployment
+  labels:
+    app: techtrends
+  namespace: {{ .Values.namespace.name }} 
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: techtrends
+  template:
+    metadata:
+      labels:
+        app: techtrends
+    spec:
+      containers:
+      - name: techtrends
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        resources:
+{{ toYaml .Values.resources | indent 12 }}
+        ports:
+        - containerPort: {{ .Values.containerPort }}
+        readinessProbe:
+          httpGet:
+{{ toYaml .Values.readinessProbe | indent 12 }} 
+            port: {{ .Values.containerPort }}
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+{{ toYaml .Values.livenessProbe | indent 12 }} 
+            port: {{ .Values.containerPort }}
+          initialDelaySeconds: 3
+          periodSeconds: 3

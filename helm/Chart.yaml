@@ -1,0 +1,9 @@
+apiVersion: v1
+name: techtrends
+description: chart to deploy techtrends news article platform
+keywords:
+  - techtrends
+version: 1.0.0
+maintainer:
+- name: Frank Wolf
+  email: fwolf@posteo.de
