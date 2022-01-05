@@ -4,14 +4,12 @@ metadata:
   name: techtrend-deployment
   labels:
     app: techtrends
-    tag: latest
   namespace: {{ .Values.namespace.name }} 
 spec:
   replicas: {{ .Values.replicaCount }} 
   selector:
     matchLabels:
       app: techtrends
-      tag: latest
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -21,7 +19,6 @@ spec:
     metadata:
       labels:
         app: techtrends
-        tag: latest
     spec:
       containers:
       - name: techtrends

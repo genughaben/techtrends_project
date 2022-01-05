@@ -4,12 +4,10 @@ metadata:
   name: techtrends
   labels:
     app: techtrends
-    tag: latest
   namespace: {{ .Values.namespace.name }}
 spec:
   selector:
     app: techtrends
-    tag: latest
   ports:
     - name: http
       port: {{ .Values.service.port }}
