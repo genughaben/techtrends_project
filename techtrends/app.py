@@ -108,6 +108,29 @@ def create():
 @app.route("/healthz")
 def health():
     app.logger.info(f"{_get_timestamp()} -  {Endpoints.HEALTH.value} endpoint was reached")
+    try:
+        connection = get_db_connection()
+        connection.close()
+    except ConnectionError:
+        return app.response_class(
+            response=json.dumps({
+                "result" : "ERROR - Unhealthy: unable to connect to database"}),
+                status=500,
+                mimetype='application/json'
+        )
+    try:
+        connection = get_db_connection()
+        posts = connection.execute(
+            'SELECT 1 FROM posts'
+        ).fetchone()
+        connection.close()
+    except sqlite3.OperationalError:
+        return app.response_class(
+            response=json.dumps({
+                "result" : "ERROR - Unhealthy: unable to retrieve data from database"}),
+                status=500,
+                mimetype='application/json'
+        )
     return app.response_class(
         response=json.dumps({"result": "OK - healthy"}),
         status=200,
