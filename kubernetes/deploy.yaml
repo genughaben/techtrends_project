@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: techtrends
-        image: genughaben/techtrends:latest
+        image: genughaben/techtrends_project:latest
         resources:
           requests:
             cpu: 250m
