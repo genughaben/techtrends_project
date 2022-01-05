@@ -1,11 +1,72 @@
 ## Docker commands used to build the application 
-# TODO: insert the docker build command
+docker build -t techtrends:v0.1 .
 
 ## Docker commands used to run the application
-# TODO: insert the docker run command
+ docker run --name techtrends -d -p 7111:3111 techtrends:v0.1
 
 ## Docker commands used to get the application logs
-# TODO: insert the docker logs command
+docker logs -f techtrends
 
 ## Logs from the container running the TechTrends application
-# TODO: paste logs from the Docker container 
+ * Serving Flask app "app" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+[2022-01-05 12:00:31,614] INFO in app: 2022-01-05 12:00:31 -  metrics endpoint was reached, metrics retrieved
+2022-01-05 12:00:31 -  metrics endpoint was reached, metrics retrieved
+2022-01-05 12:00:31 -  metrics endpoint was reached, metrics retrieved
+172.17.0.1 - - [05/Jan/2022 12:00:31] "GET /metrics HTTP/1.1" 200 -
+[2022-01-05 12:04:07,991] INFO in app: 2022-01-05 12:04:07 -  / endpoint was reached
+2022-01-05 12:04:07 -  / endpoint was reached
+2022-01-05 12:04:07 -  / endpoint was reached
+172.17.0.1 - - [05/Jan/2022 12:04:08] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [05/Jan/2022 12:04:08] "GET /static/css/main.css HTTP/1.1" 200 -
+172.17.0.1 - - [05/Jan/2022 12:04:08] "GET /favicon.ico HTTP/1.1" 404 -
+[2022-01-05 12:05:33,798] INFO in app: 2022-01-05 12:05:33 -  / endpoint was reached
+2022-01-05 12:05:33 -  / endpoint was reached
+2022-01-05 12:05:33 -  / endpoint was reached
+172.17.0.1 - - [05/Jan/2022 12:05:33] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [05/Jan/2022 12:05:33] "GET /static/css/main.css HTTP/1.1" 200 -
+172.17.0.1 - - [05/Jan/2022 12:05:33] "GET /favicon.ico HTTP/1.1" 404 -
+[2022-01-05 12:06:02,530] INFO in app: 2022-01-05 12:06:02 -  / endpoint was reached
+2022-01-05 12:06:02 -  / endpoint was reached
+2022-01-05 12:06:02 -  / endpoint was reached
+172.17.0.1 - - [05/Jan/2022 12:06:02] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [05/Jan/2022 12:06:02] "GET /static/css/main.css HTTP/1.1" 200 -
+172.17.0.1 - - [05/Jan/2022 12:06:02] "GET /favicon.ico HTTP/1.1" 404 -
+[2022-01-05 12:07:10,205] INFO in app: 2022-01-05 12:07:10 -  / endpoint was reached
+2022-01-05 12:07:10 -  / endpoint was reached
+2022-01-05 12:07:10 -  / endpoint was reached
+172.17.0.1 - - [05/Jan/2022 12:07:10] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [05/Jan/2022 12:07:10] "GET /favicon.ico HTTP/1.1" 404 -
+2022-01-05 12:07:11 -  /<int:post_id> endpoint was reached: article: 2020 CNCF Annual Report retrieved
+[2022-01-05 12:07:11,777] INFO in app: 2022-01-05 12:07:11 -  /<int:post_id> endpoint was reached: article: 2020 CNCF Annual Report retrieved
+2022-01-05 12:07:11 -  /<int:post_id> endpoint was reached: article: 2020 CNCF Annual Report retrieved
+172.17.0.1 - - [05/Jan/2022 12:07:11] "GET /1 HTTP/1.1" 200 -
+[2022-01-05 12:07:13,661] INFO in app: 2022-01-05 12:07:13 -  / endpoint was reached
+2022-01-05 12:07:13 -  / endpoint was reached
+2022-01-05 12:07:13 -  / endpoint was reached
+172.17.0.1 - - [05/Jan/2022 12:07:13] "GET / HTTP/1.1" 200 -
+[2022-01-05 12:07:14,615] INFO in app: 2022-01-05 12:07:14 -  /about endpoint was reached and page retrieved
+2022-01-05 12:07:14 -  /about endpoint was reached and page retrieved
+2022-01-05 12:07:14 -  /about endpoint was reached and page retrieved
+172.17.0.1 - - [05/Jan/2022 12:07:14] "GET /about HTTP/1.1" 200 -
+172.17.0.1 - - [05/Jan/2022 12:07:15] "GET /create HTTP/1.1" 200 -
+[2022-01-05 12:07:21,832] ERROR in app: 2022-01-05 12:07:21 -  /create endpoint was reached: could not create - title missing
+2022-01-05 12:07:21 -  /create endpoint was reached: could not create - title missing
+2022-01-05 12:07:21 -  /create endpoint was reached: could not create - title missing
+172.17.0.1 - - [05/Jan/2022 12:07:21] "POST /create HTTP/1.1" 200 -
+[2022-01-05 12:07:27,419] INFO in app: 2022-01-05 12:07:27 -  /create endpoint was reached: article: New article was created
+2022-01-05 12:07:27 -  /create endpoint was reached: article: New article was created
+2022-01-05 12:07:27 -  /create endpoint was reached: article: New article was created
+172.17.0.1 - - [05/Jan/2022 12:07:27] "POST /create HTTP/1.1" 302 -
+[2022-01-05 12:07:27,428] INFO in app: 2022-01-05 12:07:27 -  / endpoint was reached
+2022-01-05 12:07:27 -  / endpoint was reached
+2022-01-05 12:07:27 -  / endpoint was reached
+172.17.0.1 - - [05/Jan/2022 12:07:27] "GET / HTTP/1.1" 200 -
+2022-01-05 12:07:30 -  /<int:post_id> endpoint was reached: article: New article retrieved
+[2022-01-05 12:07:30,583] INFO in app: 2022-01-05 12:07:30 -  /<int:post_id> endpoint was reached: article: New article retrieved
+2022-01-05 12:07:30 -  /<int:post_id> endpoint was reached: article: New article retrieved
+172.17.0.1 - - [05/Jan/2022 12:07:30] "GET /7 HTTP/1.1" 200 -

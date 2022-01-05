@@ -1,37 +1,13 @@
+from __future__ import print_function
+
 import logging
 import sys
-from logging.config import dictConfig
 from datetime import datetime
 import sqlite3
 
 from flask import Flask, json, render_template, request, url_for, redirect, flash
-from werkzeug.exceptions import abort
 from enums.ResponseType import ResponseType
 from enums.Endpoints import Endpoints
-
-# logging.basicConfig(filename="app.log", level=logging.DEBUG)
-
-
-
-dictConfig({
-    'version': 1,
-    'formatters': {'default': {
-        'format': '[%(asctime)s] %(levelname)s in %(module)s: %(message)s',
-    }},
-    'handlers': {'wsgi': {
-        'class': 'logging.StreamHandler',
-        'stream': 'ext://flask.logging.wsgi_errors_stream',
-        'formatter': 'default'
-    },'wsgi': {
-        'class': 'logging.StreamHandler',
-        'stream': 'ext://flask.logging.wsgi_errors_stream',
-        'formatter': 'default'
-    }},
-    'root': {
-        'level': 'DEBUG',
-        'handlers': ['wsgi']
-    }
-})
 
 
 # Create a timestamp for logging
@@ -61,6 +37,10 @@ def get_post(post_id):
 
 # Define the Flask application
 app = Flask(__name__)
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.addHandler(logging.StreamHandler(sys.stderr))
+app.logger.addHandler(logging.FileHandler(filename="app.log"))
+app.logger.setLevel(logging.DEBUG)
 app.config["connections_count"] = 0
 app.config['SECRET_KEY'] = 'your secret key'
 
@@ -165,8 +145,4 @@ def metrics():
 # start the application on port 3111
 if __name__ == "__main__":
     # capture logs at sys.stdout and sys.stderr
-    app.logger.addHandler(logging.StreamHandler(sys.stdout))
-    app.logger.addHandler(logging.StreamHandler(sys.stderr))
-    app.logger.addHandler(logging.FileHandler(filename="app.log"))
-    app.logger.setLevel(logging.DEBUG)
     app.run(host='0.0.0.0', port='3111')
