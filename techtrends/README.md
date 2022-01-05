@@ -1,5 +1,7 @@
 # TechTreds Web Application
 
+![Published to dockerhub: ](https://github.com/genughaben/techtrends_project/actions/workflows/techtrends-dockerhub.yml/badge.svg)
+
 This is a Flask application that lists the latest articles within the cloud-native ecosystem.
 
 ## Run 
